@@ -1,0 +1,27 @@
+
+initialize questions, choices, and correct answer index in an array of objects
+
+initialize currentQuestion, correctAnswers, and isGameOver variables
+
+randomly choose an object
+
+populate HTML with the question, three wrong answers, and a right answer
+
+call startTimer
+
+listen for an answer to be clicked
+
+stop timer
+
+notify user if answer is correct or wrong
+ - if wrong, highlight correct answer
+
+update tracker with proper styling
+
+decease questions remaining by 1
+remove question from array
+
+wait for 4 seconds
+ - if no questions remain, update HTML with summary, and ask user if they want to play again
+  - if yes, reset array of objects and right/wrong tracker
+ - if questions remain, generate new question

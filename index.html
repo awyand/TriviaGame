@@ -5,18 +5,54 @@
   <meta charset="utf-8">
   <title>Triva: Mountain Climbing Edition</title>
 
+  <!-- Skeleton Normalize -->
+  <link rel="stylesheet" href="assets/css/normalize.css">
+  <!-- Skeleton CSS -->
+  <link rel="stylesheet" href="assets/css/skeleton.css">
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:400,700" rel="stylesheet">
   <!-- Custom CSS -->
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
 <body>
 
+  <div class="header">
+    <h1 class="headerText">MOUNTAIN CLIMBING TRIVIA</h1>
+  </div>
+
+  <div class="container">
+
+    <div class="summary">
+      <p class="summaryMessage"></p>
+      <button class="resetBtn">Reset</button>
+    </div>
+
+    <div class="row mainRow">
+
+      <div class="four columns timerColumn">
+        <div class="timer"></div>
+      </div>
+
+      <div class="eight columns">
+        <div class="questionArea">
+          <p class="question"></p>
+        </div>
+        <div class="choices"></div>
+      </div>
+
+    </div>
+
+    <div class="row resultRow">
+      <p class="result"></p>
+    </div>
+
+  </div>
 
   <!-- jQuery -->
   <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
   <!-- Custom JavaScript -->
   <script type="text/javascript" src="assets/javascript/app.js"></script>
-
 </body>
 
 </html>

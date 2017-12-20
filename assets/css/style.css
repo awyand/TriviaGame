@@ -32,17 +32,48 @@ body {
 
 /* Timer Column */
 
-.timerColumn {
-  display: table;
+/* Circle Animation and Timer */
+.circleSVG {
+  height: 180px;
+  width: 180px;
 }
+
+.circleBackground {
+  stroke: #EFEFEF;
+  stroke-width: 2;
+  fill: none;
+  cx: 17;
+  cy: 17;
+  r: 16;
+}
+
+.animateCircle {
+  animation-name: circle-empty;
+  animation-duration: 20s;
+  animation-direction: reverse;
+  animation-delay: 0s;
+  animation-timing-function: linear;
+  transform: rotate(-90deg);
+  transform-origin: center;
+  stroke: #EB593C;
+  stroke-width: 2;
+  stroke-dasharray: 0 100;
+  stroke-linecap: square;
+  fill: none;
+  cx: 17;
+  cy: 17;
+  r: 16;
+}
+
 .timer {
-  display: table-cell;
-  vertical-align: middle;
-  font-size: 100px;
-  text-align: center;
-  margin: 0 auto;
+  alignment-baseline: central;
+  text-anchor: middle;
+  font-size: 12px;
 }
-/* Need to add this class every second (and remove?) within interval */
+
+@keyframes circle-empty {
+  to { stroke-dasharray: 100 0; }
+}
 
 /* Question and Answers Column */
 .questionArea {
@@ -80,7 +111,4 @@ body {
   border: 1px solid red;
 }
 
-
-
 /* Media Queries */
-/* @media screen only and  */

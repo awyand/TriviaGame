@@ -169,7 +169,14 @@ $(document).ready(function() {
   }
 
   function runTimer() {
-    var secondsLeft = 12;
+    var secondsLeft = 20;
+
+    // Remove and Add animateCircle class to circleFill element to reset
+    $("#circleFill").removeClass("animateCircle");
+    setTimeout(function() {
+      $("#circleFill").addClass("animateCircle");
+      $(".animateCircle").css("animation-play-state", "initial");
+    }, 1);
 
     $(".timer").text(secondsLeft);
 
@@ -188,13 +195,16 @@ $(document).ready(function() {
 
   function stopTimer() {
     clearInterval(intervalId);
+    // Pause circle animation
+    $(".animateCircle").css("animation-play-state", "paused");
   }
 
   function endRound() {
-    // Highlight correct answer in green
+    // Highlight correct answer
     var correctIndex = currentQuestion.correctAnswer;
-    $(`.choice[index=${correctIndex}]`).css("background-color", "#1C7F35");
-    $(`.choice[index=${correctIndex}]`).css("color", "#FFFCEC");
+    $(`.choice[index=${correctIndex}]`).css("background-color", "#ABDCD6");
+    $(`.choice[index=${correctIndex}]`).css("color", "#333333");
+
 
     if (!isUserCorrect) {
       $(`.choice[index=${userChoiceIndex}]`).css("background-color", "#EB593C");
@@ -204,18 +214,21 @@ $(document).ready(function() {
     // Remove currentQuestion from questions array
     questions.splice(questions.indexOf(currentQuestion), 1);
 
-    // If no questions remain
-    if (questions.length === 0) {
-      // Replace contents of container with summary and reset button
-      $(".mainRow").hide();
-      $(".resultRow").hide();
-      $(".summaryMessage").text(`That's all of the questions! You got ${countCorrect} questions correct and ${countWrong} questions wrong. Click Reset to play again.`)
-      $(".summary").show();
-    } else {
-      var endRoundTimer = setTimeout(function() {
+    // Pause for 3 seconds
+    var endRoundTimer = setTimeout(function() {
+      // If no questions remain
+      if (questions.length === 0) {
+        // Replace contents of container with summary and reset button
+        $(".mainRow").hide();
+        $(".resultRow").hide();
+        $(".summaryMessage").text(`That's all of the questions! You got ${countCorrect} questions correct and ${countWrong} questions wrong. Click Reset to play again.`)
+        $(".summary").show();
+      } else {
         chooseQuestion();
-      }, 1000);
-    }
+      }
+    }, 4000);
+
+
   }
 
   ////// CALLS //////

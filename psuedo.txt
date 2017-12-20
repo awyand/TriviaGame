@@ -1,6 +1,7 @@
 Issues:
- - Style countdown timer, get rid of right/wrong counts
- - Finish circle animation
- - Center timer on left side
- - Responsive media queries
+ - Center timer on left / top
+ - Responsive / media queries
+  - Question are pushes into timer area when screen shrinks
  - Fix question height
+ - Add welcome modal to explain rules
+ - Add question tracker blocks?

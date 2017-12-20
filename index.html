@@ -23,17 +23,30 @@
 
   <div class="container">
 
+    <!-- Summary / Reset Section (hidden until game over) -->
     <div class="summary">
       <p class="summaryMessage"></p>
       <button class="resetBtn">Reset</button>
     </div>
 
+    <!-- Main Row -->
     <div class="row mainRow">
 
+      <!-- Four Columns for the timer -->
       <div class="four columns timerColumn">
-        <div class="timer"></div>
+
+        <!-- Timer SVG -->
+        <svg class="circleSVG" viewbox="0 0 34 34">
+          <circle class="circleBackground"/>
+          <circle id="circleFill"/>
+          <g><text class="timer" x="17" y="17"></text></g>
+        </svg>
       </div>
 
+      <!-- viewbox="0 0 33.83098862 33.83098862" -->
+      <!-- timer x/y is viewbox h/w / 2 -->
+
+      <!-- Eight Columns for the Question Area -->
       <div class="eight columns">
         <div class="questionArea">
           <p class="question"></p>
@@ -43,6 +56,7 @@
 
     </div>
 
+    <!-- Result Message -->
     <div class="row resultRow">
       <p class="result"></p>
     </div>

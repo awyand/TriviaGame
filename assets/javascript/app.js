@@ -156,6 +156,7 @@ $(document).ready(function() {
     isAnswerClicked = false;
     isTimeUp = false;
     userChoiceIndex = null;
+    isUserCorrect = false;
 
     // Empty appropriate HTML elements
     $(".choices").empty();
@@ -177,12 +178,19 @@ $(document).ready(function() {
     // Each question gets 20 seconds
     var secondsLeft = 20;
 
+    // Change timer font back to body font (changes at round end to use FA icons)
+    $(".timer").css("font-family", "inherit");
+    // Change timer fill back to original (changes at round end to use FA icons)
+    $(".timer").css("fill", "#333333");
+
     // Remove and re-add animateCircle class to circleFill element to reset animation
     $("#circleFill").removeClass("animateCircle");
     setTimeout(function() {
       $("#circleFill").addClass("animateCircle");
+      // Change stroke color back to original color (changed based on result)
+      $(".animateCircle").css("stroke","#333333");
       $(".animateCircle").css("animation-play-state", "initial");
-    }, 1);
+    }, 10);
 
     // Update timer with initial time
     $(".timer").text(secondsLeft);
@@ -202,7 +210,7 @@ $(document).ready(function() {
         // Add one to wrong counter
         countWrong++;
         // Update result field with time's up message
-        $(".result").text("Time's up!")
+        $(".result").text("Time's up!");
         // Call endRound
         endRound();
       }
@@ -223,11 +231,39 @@ $(document).ready(function() {
     $(`.choice[index=${correctIndex}]`).css("background-color", "#ABDCD6");
     $(`.choice[index=${correctIndex}]`).css("color", "#333333");
 
+    // If user is correct
+    if (isUserCorrect) {
+      // Change animateCircle stroke to correct blue color
+      $(".animateCircle").css("stroke", "#ABDCD6");
+      // Replace timer with blue check mark
+      $(".timer").css("font-family", "FontAwesome");
+      $(".timer").text("\uf00c");
+      $(".timer").css("fill", "#ABDCD6");
+    }
+
+
+
     // If the user is wrong
     if (!isUserCorrect) {
       // Highlight the user's choice in red
       $(`.choice[index=${userChoiceIndex}]`).css("background-color", "#EB593C");
       $(`.choice[index=${userChoiceIndex}]`).css("color", "#FFFCEC");
+      if (isTimeUp) {
+        // Make circle stroke same as background
+        $(".animateCircle").css("stroke", "#EFEFEF");
+        // Replace timer with red hourglass
+        $(".timer").css("font-family", "FontAwesome");
+        $(".timer").text("\uf253");
+        $(".timer").css("fill", "#EB593C");
+      } else {
+        // Change animateCircle stroke to wrong red color
+        $(".animateCircle").css("stroke", "#EB593C");
+        // Replace timer with red x mark
+        $(".timer").text("");
+        $(".timer").css("font-family", "FontAwesome");
+        $(".timer").css("fill", "#EB593C");
+        $(".timer").text("\uf00d");
+      }
     }
 
     // Remove currentQuestion from questions array

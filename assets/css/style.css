@@ -21,7 +21,7 @@ body {
 /* Quiz Container */
 .container {
   max-width: 768px;
-  margin-top: 30px;
+  margin: 30px auto;
   border: 1px solid 333333;
   border-radius: 2px;
   box-shadow: 8px 8px 15px #333333;
@@ -50,7 +50,8 @@ body {
   animation-timing-function: linear;
   transform: rotate(-90deg);
   transform-origin: center;
-  stroke: #EB593C;
+  /* stroke: #EB593C; */
+  stroke: #333333;
   stroke-width: 2;
   stroke-dasharray: 0 100;
   stroke-linecap: square;
@@ -65,6 +66,10 @@ body {
 
 @keyframes circle-empty {
   to { stroke-dasharray: 100 0; }
+}
+
+.fa-check {
+  color: #ABDCD6;
 }
 
 /* Question and Answers Column */
@@ -103,12 +108,23 @@ body {
   border: 1px solid red;
 }
 
-/* @media screen and (max-width: 768px) {
-  .four.columns {
-    width: 100%;
+/* Media Query: small mobile version */
+@media screen and (max-width: 399px) {
+  body {
+    padding: 10px;
   }
-  .eight.columns {
-    width: 100%;
-    margin-left: 0;
+
+  .header {
+    border-bottom: 0;
+    box-shadow: 8px 8px 15px #333333;
   }
-} */
+
+  .container {
+    margin-top: 0;
+  }
+
+  .choice:hover {
+    background-color: #FFFCEC;
+    color: #333333;
+  }
+}

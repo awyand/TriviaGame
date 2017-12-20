@@ -1,4 +1,0 @@
-Issues:
- - Center timer on left / top
- - Fix question height
- - Add welcome modal to explain rules

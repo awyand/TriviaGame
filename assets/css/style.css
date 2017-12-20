@@ -103,7 +103,7 @@ body {
   border: 1px solid red;
 }
 
-@media screen and (max-width: 768px) {
+/* @media screen and (max-width: 768px) {
   .four.columns {
     width: 100%;
   }
@@ -111,4 +111,4 @@ body {
     width: 100%;
     margin-left: 0;
   }
-}
+} */

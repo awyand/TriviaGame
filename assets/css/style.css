@@ -40,9 +40,6 @@ body {
   stroke: #EFEFEF;
   stroke-width: 2;
   fill: none;
-  cx: 17;
-  cy: 17;
-  r: 16;
 }
 
 .animateCircle {
@@ -58,9 +55,6 @@ body {
   stroke-dasharray: 0 100;
   stroke-linecap: square;
   fill: none;
-  cx: 17;
-  cy: 17;
-  r: 16;
 }
 
 .timer {

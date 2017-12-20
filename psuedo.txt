@@ -1,7 +1,4 @@
 Issues:
  - Center timer on left / top
- - Responsive / media queries
-  - Question are pushes into timer area when screen shrinks
  - Fix question height
  - Add welcome modal to explain rules
- - Add question tracker blocks?

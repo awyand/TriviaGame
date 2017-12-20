@@ -1,5 +1,8 @@
 $(document).ready(function() {
+
+
   ////// GLOBAL VARIABLES //////
+
 
   // Initialize varibles to be used in app logic
   var questions;
@@ -12,7 +15,9 @@ $(document).ready(function() {
   var isUserCorrect;
   var userChoiceIndex;
 
+
   ////// EVENT LISTENERS //////
+
 
   // When user clicks on an answer
   $(document).on("click", ".choice", function() {
@@ -24,23 +29,22 @@ $(document).ready(function() {
         $(".result").text("Correct!");
         // Add 1 to correct counter
         countCorrect++;
+        // Change isUserCorrect boolean to true for conditional styling
         isUserCorrect = true;
       } else {
         // Otherwise print wrong to result
         $(".result").text("Wrong!");
         // Add 1 to wrong counter
         countWrong++;
-        // Save userChoiceIndex
+        // Save userChoiceIndex for conditional styling
         userChoiceIndex = parseInt($(this).attr("index"));
+        // Change isUserCorrect boolean to false for conditional styling
         isUserCorrect = false;
       }
-
       // Set isAnswerClicked to true to prevent things from happening if user continues to click answers
       isAnswerClicked = true;
-
       // Stop question timer
       stopTimer();
-
       // Call next round function
       endRound();
     }
@@ -55,8 +59,9 @@ $(document).ready(function() {
 
   ////// FUNCTIONS //////
 
+
   function reset() {
-    // Set questions to array of objects holding questions and answers
+    // Set questions to array of objects holding questions, answers, and correct answer index
     questions = [
       {
         question: "What is the highest mountain summit in North America?",
@@ -138,7 +143,7 @@ $(document).ready(function() {
     // Hide summary div until game over
     $(".summary").hide();
 
-    // Show main and result rows
+    // Show main and result rows (will be hidden when game is over)
     $(".mainRow").show();
     $(".resultRow").show();
 
@@ -147,12 +152,12 @@ $(document).ready(function() {
   }
 
   function chooseQuestion() {
-    // Set round booleans to initial conditions
+    // Set booleans to initial conditions
     isAnswerClicked = false;
     isTimeUp = false;
     userChoiceIndex = null;
 
-    // Empty certain HTML elements
+    // Empty appropriate HTML elements
     $(".choices").empty();
     $(".result").empty();
 
@@ -169,44 +174,58 @@ $(document).ready(function() {
   }
 
   function runTimer() {
+    // Each question gets 20 seconds
     var secondsLeft = 20;
 
-    // Remove and Add animateCircle class to circleFill element to reset
+    // Remove and re-add animateCircle class to circleFill element to reset animation
     $("#circleFill").removeClass("animateCircle");
     setTimeout(function() {
       $("#circleFill").addClass("animateCircle");
       $(".animateCircle").css("animation-play-state", "initial");
     }, 1);
 
+    // Update timer with initial time
     $(".timer").text(secondsLeft);
 
+    // Every second
     intervalId = setInterval(function() {
+      // Decrement secondsLeft
       secondsLeft--;
+      // Update timer with new value
       $(".timer").text(secondsLeft);
+      // If timer has run out
       if (secondsLeft === 0) {
+        // Set isTimeUp boolean to true to prevent user from doing things by clicking
         isTimeUp = true;
+        // Stop timer
         stopTimer();
+        // Add one to wrong counter
         countWrong++;
+        // Update result field with time's up message
         $(".result").text("Time's up!")
+        // Call endRound
         endRound();
       }
     }, 1000);
   }
 
   function stopTimer() {
+    // Stop timer
     clearInterval(intervalId);
     // Pause circle animation
     $(".animateCircle").css("animation-play-state", "paused");
   }
 
   function endRound() {
-    // Highlight correct answer
+    // Save currentQuestion's correctIndex to a variable
     var correctIndex = currentQuestion.correctAnswer;
+    // Highlight correct answer in blue regardless if the user is right or wrong
     $(`.choice[index=${correctIndex}]`).css("background-color", "#ABDCD6");
     $(`.choice[index=${correctIndex}]`).css("color", "#333333");
 
-
+    // If the user is wrong
     if (!isUserCorrect) {
+      // Highlight the user's choice in red
       $(`.choice[index=${userChoiceIndex}]`).css("background-color", "#EB593C");
       $(`.choice[index=${userChoiceIndex}]`).css("color", "#FFFCEC");
     }
@@ -214,7 +233,7 @@ $(document).ready(function() {
     // Remove currentQuestion from questions array
     questions.splice(questions.indexOf(currentQuestion), 1);
 
-    // Pause for 3 seconds
+    // Pause for 4 seconds
     var endRoundTimer = setTimeout(function() {
       // If no questions remain
       if (questions.length === 0) {
@@ -227,8 +246,6 @@ $(document).ready(function() {
         chooseQuestion();
       }
     }, 4000);
-
-
   }
 
   ////// CALLS //////

@@ -50,7 +50,6 @@ body {
   animation-timing-function: linear;
   transform: rotate(-90deg);
   transform-origin: center;
-  /* stroke: #EB593C; */
   stroke: #333333;
   stroke-width: 2;
   stroke-dasharray: 0 100;

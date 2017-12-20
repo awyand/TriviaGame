@@ -20,7 +20,7 @@ $(document).ready(function() {
 
 
   // When user clicks on an answer
-  $(document).on("click", ".choice", function() {
+  $(document).on("click touchstart", ".choice", function() {
     // If an answer hasn't been clicked and time isn't up
     if (!isAnswerClicked && !isTimeUp) {
       // If the answer clicked is correct
@@ -51,7 +51,7 @@ $(document).ready(function() {
   });
 
   // When user clicks on the Reset button
-  $(document).on("click", ".resetBtn", function() {
+  $(document).on("click touchstart", ".resetBtn", function() {
     // Call reset function
     reset();
   });
@@ -257,7 +257,7 @@ $(document).ready(function() {
   $(".resultRow").hide();
 
   // When user clicks start button
-  $(document).on("click", ".startBtn", function() {
+  $(document).on("click touchstart", ".startBtn", function() {
     // Hide welcome message
     $(".welcome").hide();
     // Call reset

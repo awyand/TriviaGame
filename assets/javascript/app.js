@@ -51,7 +51,7 @@ $(document).ready(function() {
   });
 
   // When user clicks on the Reset button
-  $(document).on("click", "button", function() {
+  $(document).on("click", ".resetBtn", function() {
     // Call reset function
     reset();
   });
@@ -118,7 +118,7 @@ $(document).ready(function() {
       },
 
       {
-        question: "Mt. Everset is part of what section of the Himalayan range?",
+        question: "Mt. Everest is part of what section of the Himalayan range?",
         answers: ["Mahalangur", "Kangchenjunga", "Dhaulagiri", "Nanga Parbat"],
         correctAnswer: 0
       },
@@ -240,7 +240,7 @@ $(document).ready(function() {
         // Replace contents of container with summary and reset button
         $(".mainRow").hide();
         $(".resultRow").hide();
-        $(".summaryMessage").text(`That's all of the questions! You got ${countCorrect} questions correct and ${countWrong} questions wrong. Click Reset to play again.`)
+        $(".summaryMessage").html(`<p>That's all of the questions! You got ${countCorrect} questions correct and ${countWrong} questions wrong.</p><p>Click Reset to play again.</p>`)
         $(".summary").show();
       } else {
         chooseQuestion();
@@ -248,6 +248,19 @@ $(document).ready(function() {
     }, 4000);
   }
 
+
   ////// CALLS //////
-  reset();
+
+  // Hide main row, result row, and summary until user clicks startBtn
+  $(".mainRow").hide();
+  $(".summary").hide();
+  $(".resultRow").hide();
+
+  // When user clicks start button
+  $(document).on("click", ".startBtn", function() {
+    // Hide welcome message
+    $(".welcome").hide();
+    // Call reset
+    reset();
+  })
 });
